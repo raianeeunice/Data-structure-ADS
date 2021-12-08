@@ -1,6 +1,6 @@
 # Exercício
 ```
-O Estacionamento de Bashemin contém uma única alameda que guarda até dez carros. 
+O Estacionamento de Bashemin contém uma única alameda que guarda os carros. 
 Existe apenas uma entrada/saída no estacionamento, em uma extremidade da alameda. Se chegar um cliente para retirar 
 um carro que não seja o mais próximo da saída, todos os carros bloqueando seu caminho sairão do estacionamento, o carro 
 do cliente será manobrado para fora do estacionamento, e os outros carros voltarão a ocupar a mesma sequência inicial.
