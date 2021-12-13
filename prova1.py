@@ -42,12 +42,12 @@ class Pilha:
         else:
             raise IndexError("A pilha está vazia")
 
-    def peek(self):
-        """ Retorna o topo da pilha sem remover """
+    """ def peek(self):
+        Retorna o topo da pilha sem remover
         if self._size > 0:
             return self.top.data
         else:
-            raise IndexError("A pilha está vazia")
+            raise IndexError("A pilha está vazia") """
 
     def __repr__(self):
         """ Dá uma representação desse objeto """
@@ -61,9 +61,9 @@ class Pilha:
 # Cria uma pilha vazia.
 estacionamento = Pilha()
 manobra = Pilha()
-print("---------------------------------------------------")
-print("------- Estacionamento Caminho Das Índias ---------")
-print("---------------------------------------------------")
+print()
+print("          Estacionamento Caminho Das Índias")
+print('-'*60)
 print()
 print("Estacionamento vazio!")
 print("Quantidade de carros: ", len(estacionamento))
@@ -96,45 +96,51 @@ while acao == "S" or acao == "E":
         print(estacionamento)
 
     else:
-        print("Posição dos carros:")
-        print(estacionamento)
-        placa = str(input("Digite a placa do seu carro: "))
-        atual = estacionamento.top
-        achou = False
-        profundidade = 0
-        while(atual):
-            if placa == atual.data[0]:
-                achou = True
-                break
-            atual = atual.next
-            profundidade += 1
-        if achou == True:
-            for i in range(profundidade):
-                carro = estacionamento.pop()
-                carro[1] += 1
-                manobra.push(carro)
-                print("********** Manobrando os carros **********")
-                print()
-                print("Estacionamento")
-                print(estacionamento)
-                print("Manobra")
-                print(manobra)
-            carroEscolhido = estacionamento.pop()
+        if len(estacionamento) == 0:
             print()
-            vez = "vez" if carroEscolhido[1] == 1 else "vezes" #Singular ou plural
-            print("O carro {0} saiu e foi manobrado {1} {2}!".format(carroEscolhido[0],carroEscolhido[1],vez))
+            print("Não tem carros para sair! Digite E para estacionar ou outra tecla para sair do programa!")
             print()
-            
-            for i in range(profundidade):
+        else:
+            print("Posição dos carros:")
+            print(estacionamento)
+            placa = str(input("Digite a placa do seu carro: "))
+            atual = estacionamento.top
+            achou = False
+            profundidade = 0
+            while(atual):
+                if placa == atual.data[0]:
+                    achou = True
+                    break
+                atual = atual.next
+                profundidade += 1
+            if achou == True:
+                for i in range(profundidade):
+                    carro = estacionamento.pop()
+                    carro[1] += 1
+                    manobra.push(carro)
+                    print("********** Manobrando os carros **********")
+                    print()
+                    print("Estacionamento")
+                    print(estacionamento)
+                    print("Manobra")
+                    print(manobra)
+                carroEscolhido = estacionamento.pop()
                 print()
-                print("********** Colocando os carros de volta **********")
-                carro = manobra.pop()
-                estacionamento.push(carro)
+                vez = "vez" if carroEscolhido[1] == 1 else "vezes" #Singular ou plural
+                print("O carro {0} saiu e foi manobrado {1} {2}!".format(carroEscolhido[0],carroEscolhido[1],vez))
                 print()
-                print("Estacionamento")
-                print(estacionamento)
-                print("Manobra")
-                print(manobra)
-                print()
+                
+                for i in range(profundidade):
+                    print()
+                    print("********** Colocando os carros de volta **********")
+                    carro = manobra.pop()
+                    estacionamento.push(carro)
+                    print()
+                    print("Estacionamento")
+                    print(estacionamento)
+                    print("Manobra")
+                    print(manobra)
+                    print()
     print("Quantidade de carros: ", len(estacionamento))
+    print()
     acao = str(input("Digite E para estacionar ou digite S para sair: "))
