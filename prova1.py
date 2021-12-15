@@ -1,4 +1,5 @@
 from node import Node
+import os
 
 
 class Pilha:
@@ -65,14 +66,17 @@ print()
 print("          Estacionamento Caminho Das Índias")
 print('-'*60)
 print()
-print("Estacionamento vazio!")
+print("É proibido estacionar na vida, mas o seu carro pode estacionar aqui!")
+print("Nosso estacionamento está vazio!")
 print("Quantidade de carros: ", len(estacionamento))
 print()
+str(input("Aperte ENTER para continuar!"))
+os.system("cls")
 
 # Insere o primeiro elemento na pilha.
 print("--------------- Sejam Bem-vindos! ----------------")
 carro1 = str(input("Digite a placa do seu carro: "))
-print()
+os.system("cls")
 print("---------- Seu carro está bem guardado -----------")
 estacionamento.push([carro1, 0])
 print()
@@ -82,14 +86,14 @@ print("Quantidade de carros: ", len(estacionamento))
 print()
 
 # Verifica se o carro quer sair ou entrar
-acao = str(input("Digite E para estacionar ou digite S para sair: "))
+acao = str(input("Digite E para estacionar ou digite S para sair com o carro: "))
 while acao == "S" or acao == "E":
     if acao == "E":
-        print()
+        os.system("cls")
         print("--------------- Sejam Bem-vindos! ----------------")
         carroN = str(input("Digite a placa do seu carro: "))
         estacionamento.push([carroN, 0])
-        print()
+        os.system("cls")
         print("---------- Seu carro está bem guardado -----------")
         print()
         print("Estacionamento")
@@ -97,12 +101,15 @@ while acao == "S" or acao == "E":
 
     else:
         if len(estacionamento) == 0:
-            print()
+            os.system("cls")
             print("Não tem carros para sair! Digite E para estacionar ou outra tecla para sair do programa!")
-            print()
+
         else:
-            print("Posição dos carros:")
+            os.system("cls")
+            print("Posição dos carros no estacionamento:")
+            print()
             print(estacionamento)
+            print()
             placa = str(input("Digite a placa do seu carro: "))
             atual = estacionamento.top
             achou = False
@@ -118,6 +125,7 @@ while acao == "S" or acao == "E":
                     carro = estacionamento.pop()
                     carro[1] += 1
                     manobra.push(carro)
+                    os.system("cls")
                     print("********** Manobrando os carros **********")
                     print()
                     print("Estacionamento")
@@ -128,10 +136,8 @@ while acao == "S" or acao == "E":
                 print()
                 vez = "vez" if carroEscolhido[1] == 1 else "vezes" #Singular ou plural
                 print("O carro {0} saiu e foi manobrado {1} {2}!".format(carroEscolhido[0],carroEscolhido[1],vez))
-                print()
-                
+                print()                
                 for i in range(profundidade):
-                    print()
                     print("********** Colocando os carros de volta **********")
                     carro = manobra.pop()
                     estacionamento.push(carro)
@@ -144,3 +150,4 @@ while acao == "S" or acao == "E":
     print("Quantidade de carros: ", len(estacionamento))
     print()
     acao = str(input("Digite E para estacionar ou digite S para sair: "))
+    os.system("cls")
